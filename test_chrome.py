@@ -6,7 +6,7 @@ from selenium.webdriver.chrome.options import Options
 
 class SendMessageFacebook:
     
-    def __init__(self, link, msg_content):
+    def __init__(self, filename, msg_content):
         option = Options()
         option.add_argument("--disable-infobars")
         option.add_argument("start-maximized")
@@ -17,8 +17,13 @@ class SendMessageFacebook:
             "profile.default_content_setting_values.notifications": 1 
         })
 
+        '''filename = 'C:/Users/rajan/Desktop/facebook-automation/userlist.txt'
+        '''
+        fh = open(filename)
+        link =" "
+
         # Step 1) Open Firefox 
-        browser = webdriver.Chrome(chrome_options=option, executable_path=r'C:/Users/USER/Desktop/facebook-automation/chromedriver')
+        browser = webdriver.Chrome(chrome_options=option, executable_path=r'C:/Users/rajan/Desktop/facebook-automation/chromedriver.exe')
 
         # Step 2) Navigate to Facebook
         browser.get("http://www.facebook.com")
@@ -34,20 +39,22 @@ class SendMessageFacebook:
         submit.click()
         time.sleep(1)
 
-        browser.get(link)
-        time.sleep(3)
+        while(link):
+            link = fh.readline()
+            browser.get(link)
+            time.sleep(3)
 
-        message = browser.find_element_by_css_selector(f'[aria-label="Message"]')
-        time.sleep(1)
+            message = browser.find_element_by_css_selector(f'[aria-label="Message"]')
+            time.sleep(1)
 
-        message.click()
-        time.sleep(3)
+            message.click()
+            time.sleep(5)
 
-        actions = browser.find_element_by_css_selector(f'[aria-label="Aa"]')
-        time.sleep(3)
+            actions = browser.find_element_by_css_selector(f'[aria-label="Aa"]')
+            time.sleep(3)
 
-        actions.send_keys(msg_content)
-        actions.submit()
-        time.sleep(3)
+            actions.send_keys(msg_content)
+            actions.submit()
+            time.sleep(3)
 
         browser.quit()

@@ -3,7 +3,7 @@ import glob
 import re
 
 
-filename = 'C:/Users/USER/Desktop/facebook-automation/comment.html'
+filename = 'C:/Users/rajan/Desktop/facebook-automation/comment2.html'
 
 fh = open(filename)
 s =" "
