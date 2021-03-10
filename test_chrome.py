@@ -17,13 +17,11 @@ class SendMessageFacebook:
             "profile.default_content_setting_values.notifications": 1 
         })
 
-        '''filename = 'C:/Users/rajan/Desktop/facebook-automation/userlist.txt'
-        '''
         fh = open(filename)
         link =" "
 
         # Step 1) Open Firefox 
-        browser = webdriver.Chrome(chrome_options=option, executable_path=r'C:/Users/rajan/Desktop/facebook-automation/chromedriver.exe')
+        browser = webdriver.Chrome(chrome_options=option, executable_path=r'C:/Users/USER/Desktop/facebook-automation/chromedriver.exe')
 
         # Step 2) Navigate to Facebook
         browser.get("http://www.facebook.com")
